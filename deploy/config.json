@@ -1,0 +1,131 @@
+{
+	"Log": {
+		// V2bX 的日志配置，独立于各 Core 的 log 配置
+
+		// 日志等级，info, warn, error, none
+		"Level": "warn",
+		// 日志输出路径，默认输出到标准输出
+		"Output": ""
+	},
+	"Cores": [
+		{
+			"Type": "xray",
+			"Log": {
+				// 同 Xray-core log 部分配置
+				"Level": "error",
+				"AccessPath": "",
+				"ErrorPath": ""
+			},
+			// 静态资源文件目录
+			"AssetPath": "",
+			// DNS配置文件目录
+			"DnsConfigPath": "",
+			// 路由配置文件目录
+			"RouteConfigPath": "",
+			// 本地策略相关配置
+			"ConnectionConfig": {
+				// 详见 https://xtls.github.io/config/policy.html#levelpolicyobject
+				"handshake": 4,
+				"connIdle": 300,
+				"uplinkOnly": 2,
+				"downlinkOnly": 5,
+				"statsUserUplink": false,
+				"statsUserDownlink": false,
+				"bufferSize": 4
+			},
+			// 自定义Inbound配置文件目录
+			"InboundConfigPath": "",
+			// 自定义Outbound配置文件目录
+			"OutboundConfigPath": ""
+		}
+	],
+	"Nodes": [
+		{
+			// xray内核
+			"Name": "Trojan_node1",
+			"Core": "xray",
+			"CoreName": "",
+			"ApiHost": "https://xx.com",
+			"ApiKey": "d1dxxf2-e567-4ac7-b663-dcfc2e381eee",
+			"NodeID": 51,
+			"NodeType": "Trojan",
+			"Timeout": 30,
+			"ListenIP": "0.0.0.0",
+			"SendIP": "0.0.0.0",
+			"DeviceOnlineMinTraffic": 100,
+			"EnableProxyProtocol": false,
+			"EnableTFO": true,
+			// 以上同 sing
+
+			// 开启自定义DNS
+			"EnableDNS": false,
+
+			// DNS解析类型，AsIs、UseIP、UseIPv4、UseIPv6
+			"DNSType": "AsIs",
+
+			// 开启udp over tcp
+			"EnableUot": false,
+
+			// 禁用IVCheck
+			"DisableIVCheck": false,
+
+			// 禁用嗅探
+			"DisableSniffing": false,
+
+			// 开启回落
+			"EnableFallback": false,
+
+			// 回落相关配置 详见 https://xtls.github.io/config/features/fallback.html#fallbackobject
+			"FallBackConfigs": [
+				{
+					"SNI": "",
+					"Alpn": "",
+					"Path": "",
+					"Dest": "",
+					"ProxyProtocolVer": 0
+				}
+			],
+            // 本地限制器相关配置
+			"LimitConfig": {
+				// 用户速度限制
+				"SpeedLimit": 0,
+
+				// 开启动态限速(暂不可用)
+				"EnableDynamicSpeedLimit": false,
+
+				// 动态限速相关配置(暂不可用)
+				"DynamicSpeedLimitConfig": {
+					// 检查周期
+					"Periodic": 60,
+
+					// 检查周期内触发限制的流量数
+					"Traffic": 1000,
+
+					// 触发限制后的速度限制
+					"SpeedLimit": 100,
+
+					// 速度限制过期时间
+					"ExpireTime": 60
+
+				}
+			},
+
+			// 证书相关配置
+			"CertConfig": {
+				// 证书申请模式，none、http、dns、self
+				"CertMode": "self",
+
+				"RejectUnknownSni": false,
+
+				// 证书域名
+				"CertDomain": "*.the-best-airfield.com",
+
+				// 证书文件目录
+				"CertFile": "/etc/V2bX/cert/new.download.the-best-airfield.com.crt",
+
+				// 密钥文件目录
+				"KeyFile": "/etc/V2bX/cert/new.download.the-best-airfield.com.key"
+			}
+		}
+	]
+}

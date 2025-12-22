@@ -1,0 +1,12 @@
+services:
+  v2bx:
+    image: crpi-r21td9yeapqngs0l.cn-chengdu.personal.cr.aliyuncs.com/coterjiesen/v2bx:0.0.1  # You can specify a different version if needed
+    container_name: v2bx
+
+    ports:
+      - "38443:38443" 
+      - "38444:38444" 
+      - "38445:38445" 
+    volumes:
+      - ./config.json:/etc/V2bX/config.json
+      - ./cert:/etc/V2bX/cert
