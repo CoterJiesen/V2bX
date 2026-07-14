@@ -1,8 +1,5 @@
 services:
   v2bx:
-    build:
-      context: ../  # 这里把当前路径的上一级加到上下文环境中
-      dockerfile: ./deploy/Dockerfile  #指定dockerfile
     image: crpi-r21td9yeapqngs0l.cn-chengdu.personal.cr.aliyuncs.com/coterjiesen/v2bx:0.0.2  # You can specify a different version if needed
     container_name: v2bx
 

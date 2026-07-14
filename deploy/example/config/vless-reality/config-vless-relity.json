@@ -1,0 +1,45 @@
+{
+    "Log": {
+        "Level": "info",
+        "Output": ""
+    },
+    "AssetPath": ".",
+    "Cores": [
+    {
+        "Type": "xray",
+        "Log": {
+            "Level": "info",
+            // "ErrorPath": "/etc/V2bX/error.log"
+        },
+        // "OutboundConfigPath": "example/custom_outbound.json",
+        // "RouteConfigPath": "example/route.json"
+    }],
+    "Nodes": [{
+            "Core": "xray",
+            "ApiHost": "https://conf-dashijie.xxxxx.xyz",
+            "ApiKey": "d1df64f2-e567-4ac7-b663-dcfc2e381xxx",
+            "NodeID": 7,
+            "NodeType": "vless",
+            "Timeout": 30,
+            "ListenIP": "0.0.0.0",
+            "SendIP": "0.0.0.0",
+            "DeviceOnlineMinTraffic": 200,
+            "MinReportTraffic": 0,
+            "EnableProxyProtocol": false,
+            "EnableUot": true,
+            "EnableTFO": true,
+            "DNSType": "UseIPv4",
+            "CertConfig": {
+                "CertMode": "none",
+                "RejectUnknownSni": false,
+                "CertDomain": "example.com",
+                // "CertFile": "/etc/V2bX/fullchain.cer",
+                // "KeyFile": "/etc/V2bX/cert.key",
+                "Email": "v2bx@github.com",
+                "Provider": "cloudflare",
+                "DNSEnv": {
+                    "EnvName": "env1"
+                }
+            }
+        }]
+}
