@@ -3,4 +3,4 @@ set -e
 
 nginx
 
-/opt/V2bX server --config /opt/config.json
+/etc/V2bX/V2bX server --config /etc/V2bX/config.json
